@@ -8,7 +8,6 @@ for inpath in generated_python_files/*.py*; do
   inname="$(basename "$inpath")"
   outname="$inname"
   outpath="$outdir/$outname"
-  echo "$inpath > $outpath"
   ( \
     echo "from typing import Any"; \
     sed \

@@ -8,6 +8,10 @@ all-offline:
 	$(MAKE) postprocess-proto-files
 	$(MAKE) generate-py
 	$(MAKE) postprocess-py
+	$(MAKE) package-struct-py
+
+package-struct-py:
+	./make-py-package-structure.sh
 
 postprocess-py:
 	./postprocess-generated-py.sh
