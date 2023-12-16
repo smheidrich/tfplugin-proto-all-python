@@ -7,11 +7,11 @@ touch "$outdir/__init__.py"
 
 for inpath in postprocessed_python_files/*.py*; do
   inname="$(basename "$inpath")"
-  outname="$(echo "$inname" | sed -e 's/_pb2//' -e 's/tfplugin/v/')"
+  outname="$(echo "$inname" | sed -e 's/_pb2//')"
   outpath="$outdir/$outname"
   ( \
     sed \
-      -e 's/import tfplugin\([0-9]_[0-9]\)_pb2/from . import v\1/' \
+      -e 's/import v\([0-9]\)_\([0-9]\)_pb2/from . import v\1_\2/' \
       "$inpath" \
   ) > "$outpath"
 done

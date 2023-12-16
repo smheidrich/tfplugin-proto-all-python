@@ -28,3 +28,5 @@ fetch-proto-files:
 clean-offline:
 	rm -rf ./postprocessed_proto_files
 	rm -rf ./generated_python_files
+	rm -rf ./postprocessed_python_files
+	rm -rf ./tfplugin_proto/*.py*

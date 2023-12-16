@@ -9,7 +9,7 @@ for inpath in generated_python_files/*.py*; do
   outname="$inname"
   outpath="$outdir/$outname"
   ( \
-    echo "from typing import Any"; \
+    #echo "from typing import Any"; \
     sed \
       -e 's/__slots__ = \[\]/__slots__: list[str] = []/' \
       -e 's/\([^s].\)_Mapping\([^[]\)/\1_Mapping[Any, Any]\2/g' \
