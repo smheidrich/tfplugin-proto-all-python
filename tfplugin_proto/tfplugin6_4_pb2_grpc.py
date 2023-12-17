@@ -2,11 +2,12 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import v6_1 as v6__1__pb2
+from . import tfplugin6_4_pb2 as tfplugin6__4__pb2
 
 
 class ProviderStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """////// Information about what a provider supports/expects
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -14,73 +15,91 @@ class ProviderStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.GetMetadata = channel.unary_unary(
+                '/tfplugin6.Provider/GetMetadata',
+                request_serializer=tfplugin6__4__pb2.GetMetadata.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.GetMetadata.Response.FromString,
+                )
         self.GetProviderSchema = channel.unary_unary(
-                '/v6.Provider/GetProviderSchema',
-                request_serializer=v6__1__pb2.GetProviderSchema.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.GetProviderSchema.Response.FromString,
+                '/tfplugin6.Provider/GetProviderSchema',
+                request_serializer=tfplugin6__4__pb2.GetProviderSchema.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.GetProviderSchema.Response.FromString,
                 )
         self.ValidateProviderConfig = channel.unary_unary(
-                '/v6.Provider/ValidateProviderConfig',
-                request_serializer=v6__1__pb2.ValidateProviderConfig.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ValidateProviderConfig.Response.FromString,
+                '/tfplugin6.Provider/ValidateProviderConfig',
+                request_serializer=tfplugin6__4__pb2.ValidateProviderConfig.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ValidateProviderConfig.Response.FromString,
                 )
         self.ValidateResourceConfig = channel.unary_unary(
-                '/v6.Provider/ValidateResourceConfig',
-                request_serializer=v6__1__pb2.ValidateResourceConfig.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ValidateResourceConfig.Response.FromString,
+                '/tfplugin6.Provider/ValidateResourceConfig',
+                request_serializer=tfplugin6__4__pb2.ValidateResourceConfig.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ValidateResourceConfig.Response.FromString,
                 )
         self.ValidateDataResourceConfig = channel.unary_unary(
-                '/v6.Provider/ValidateDataResourceConfig',
-                request_serializer=v6__1__pb2.ValidateDataResourceConfig.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ValidateDataResourceConfig.Response.FromString,
+                '/tfplugin6.Provider/ValidateDataResourceConfig',
+                request_serializer=tfplugin6__4__pb2.ValidateDataResourceConfig.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ValidateDataResourceConfig.Response.FromString,
                 )
         self.UpgradeResourceState = channel.unary_unary(
-                '/v6.Provider/UpgradeResourceState',
-                request_serializer=v6__1__pb2.UpgradeResourceState.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.UpgradeResourceState.Response.FromString,
+                '/tfplugin6.Provider/UpgradeResourceState',
+                request_serializer=tfplugin6__4__pb2.UpgradeResourceState.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.UpgradeResourceState.Response.FromString,
                 )
         self.ConfigureProvider = channel.unary_unary(
-                '/v6.Provider/ConfigureProvider',
-                request_serializer=v6__1__pb2.ConfigureProvider.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ConfigureProvider.Response.FromString,
+                '/tfplugin6.Provider/ConfigureProvider',
+                request_serializer=tfplugin6__4__pb2.ConfigureProvider.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ConfigureProvider.Response.FromString,
                 )
         self.ReadResource = channel.unary_unary(
-                '/v6.Provider/ReadResource',
-                request_serializer=v6__1__pb2.ReadResource.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ReadResource.Response.FromString,
+                '/tfplugin6.Provider/ReadResource',
+                request_serializer=tfplugin6__4__pb2.ReadResource.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ReadResource.Response.FromString,
                 )
         self.PlanResourceChange = channel.unary_unary(
-                '/v6.Provider/PlanResourceChange',
-                request_serializer=v6__1__pb2.PlanResourceChange.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.PlanResourceChange.Response.FromString,
+                '/tfplugin6.Provider/PlanResourceChange',
+                request_serializer=tfplugin6__4__pb2.PlanResourceChange.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.PlanResourceChange.Response.FromString,
                 )
         self.ApplyResourceChange = channel.unary_unary(
-                '/v6.Provider/ApplyResourceChange',
-                request_serializer=v6__1__pb2.ApplyResourceChange.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ApplyResourceChange.Response.FromString,
+                '/tfplugin6.Provider/ApplyResourceChange',
+                request_serializer=tfplugin6__4__pb2.ApplyResourceChange.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ApplyResourceChange.Response.FromString,
                 )
         self.ImportResourceState = channel.unary_unary(
-                '/v6.Provider/ImportResourceState',
-                request_serializer=v6__1__pb2.ImportResourceState.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ImportResourceState.Response.FromString,
+                '/tfplugin6.Provider/ImportResourceState',
+                request_serializer=tfplugin6__4__pb2.ImportResourceState.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ImportResourceState.Response.FromString,
                 )
         self.ReadDataSource = channel.unary_unary(
-                '/v6.Provider/ReadDataSource',
-                request_serializer=v6__1__pb2.ReadDataSource.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.ReadDataSource.Response.FromString,
+                '/tfplugin6.Provider/ReadDataSource',
+                request_serializer=tfplugin6__4__pb2.ReadDataSource.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.ReadDataSource.Response.FromString,
                 )
         self.StopProvider = channel.unary_unary(
-                '/v6.Provider/StopProvider',
-                request_serializer=v6__1__pb2.StopProvider.Request.SerializeToString,
-                response_deserializer=v6__1__pb2.StopProvider.Response.FromString,
+                '/tfplugin6.Provider/StopProvider',
+                request_serializer=tfplugin6__4__pb2.StopProvider.Request.SerializeToString,
+                response_deserializer=tfplugin6__4__pb2.StopProvider.Response.FromString,
                 )
 
 
 class ProviderServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """////// Information about what a provider supports/expects
+    """
+
+    def GetMetadata(self, request, context):
+        """GetMetadata returns upfront information about server capabilities and
+        supported resource types without requiring the server to instantiate all
+        schema information, which may be memory intensive. This RPC is optional,
+        where clients may receive an unimplemented RPC error. Clients should
+        ignore the error and call the GetProviderSchema RPC as a fallback.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def GetProviderSchema(self, request, context):
-        """////// Information about what a provider supports/expects
+        """GetSchema returns schema information for the provider, data resources,
+        and managed resources.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -158,75 +177,98 @@ class ProviderServicer(object):
 
 def add_ProviderServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'GetMetadata': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetMetadata,
+                    request_deserializer=tfplugin6__4__pb2.GetMetadata.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.GetMetadata.Response.SerializeToString,
+            ),
             'GetProviderSchema': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProviderSchema,
-                    request_deserializer=v6__1__pb2.GetProviderSchema.Request.FromString,
-                    response_serializer=v6__1__pb2.GetProviderSchema.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.GetProviderSchema.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.GetProviderSchema.Response.SerializeToString,
             ),
             'ValidateProviderConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.ValidateProviderConfig,
-                    request_deserializer=v6__1__pb2.ValidateProviderConfig.Request.FromString,
-                    response_serializer=v6__1__pb2.ValidateProviderConfig.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ValidateProviderConfig.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ValidateProviderConfig.Response.SerializeToString,
             ),
             'ValidateResourceConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.ValidateResourceConfig,
-                    request_deserializer=v6__1__pb2.ValidateResourceConfig.Request.FromString,
-                    response_serializer=v6__1__pb2.ValidateResourceConfig.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ValidateResourceConfig.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ValidateResourceConfig.Response.SerializeToString,
             ),
             'ValidateDataResourceConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.ValidateDataResourceConfig,
-                    request_deserializer=v6__1__pb2.ValidateDataResourceConfig.Request.FromString,
-                    response_serializer=v6__1__pb2.ValidateDataResourceConfig.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ValidateDataResourceConfig.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ValidateDataResourceConfig.Response.SerializeToString,
             ),
             'UpgradeResourceState': grpc.unary_unary_rpc_method_handler(
                     servicer.UpgradeResourceState,
-                    request_deserializer=v6__1__pb2.UpgradeResourceState.Request.FromString,
-                    response_serializer=v6__1__pb2.UpgradeResourceState.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.UpgradeResourceState.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.UpgradeResourceState.Response.SerializeToString,
             ),
             'ConfigureProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.ConfigureProvider,
-                    request_deserializer=v6__1__pb2.ConfigureProvider.Request.FromString,
-                    response_serializer=v6__1__pb2.ConfigureProvider.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ConfigureProvider.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ConfigureProvider.Response.SerializeToString,
             ),
             'ReadResource': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadResource,
-                    request_deserializer=v6__1__pb2.ReadResource.Request.FromString,
-                    response_serializer=v6__1__pb2.ReadResource.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ReadResource.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ReadResource.Response.SerializeToString,
             ),
             'PlanResourceChange': grpc.unary_unary_rpc_method_handler(
                     servicer.PlanResourceChange,
-                    request_deserializer=v6__1__pb2.PlanResourceChange.Request.FromString,
-                    response_serializer=v6__1__pb2.PlanResourceChange.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.PlanResourceChange.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.PlanResourceChange.Response.SerializeToString,
             ),
             'ApplyResourceChange': grpc.unary_unary_rpc_method_handler(
                     servicer.ApplyResourceChange,
-                    request_deserializer=v6__1__pb2.ApplyResourceChange.Request.FromString,
-                    response_serializer=v6__1__pb2.ApplyResourceChange.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ApplyResourceChange.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ApplyResourceChange.Response.SerializeToString,
             ),
             'ImportResourceState': grpc.unary_unary_rpc_method_handler(
                     servicer.ImportResourceState,
-                    request_deserializer=v6__1__pb2.ImportResourceState.Request.FromString,
-                    response_serializer=v6__1__pb2.ImportResourceState.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ImportResourceState.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ImportResourceState.Response.SerializeToString,
             ),
             'ReadDataSource': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadDataSource,
-                    request_deserializer=v6__1__pb2.ReadDataSource.Request.FromString,
-                    response_serializer=v6__1__pb2.ReadDataSource.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.ReadDataSource.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.ReadDataSource.Response.SerializeToString,
             ),
             'StopProvider': grpc.unary_unary_rpc_method_handler(
                     servicer.StopProvider,
-                    request_deserializer=v6__1__pb2.StopProvider.Request.FromString,
-                    response_serializer=v6__1__pb2.StopProvider.Response.SerializeToString,
+                    request_deserializer=tfplugin6__4__pb2.StopProvider.Request.FromString,
+                    response_serializer=tfplugin6__4__pb2.StopProvider.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'v6.Provider', rpc_method_handlers)
+            'tfplugin6.Provider', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
 class Provider(object):
-    """Missing associated documentation comment in .proto file."""
+    """////// Information about what a provider supports/expects
+    """
+
+    @staticmethod
+    def GetMetadata(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/GetMetadata',
+            tfplugin6__4__pb2.GetMetadata.Request.SerializeToString,
+            tfplugin6__4__pb2.GetMetadata.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def GetProviderSchema(request,
@@ -239,9 +281,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/GetProviderSchema',
-            v6__1__pb2.GetProviderSchema.Request.SerializeToString,
-            v6__1__pb2.GetProviderSchema.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/GetProviderSchema',
+            tfplugin6__4__pb2.GetProviderSchema.Request.SerializeToString,
+            tfplugin6__4__pb2.GetProviderSchema.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -256,9 +298,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ValidateProviderConfig',
-            v6__1__pb2.ValidateProviderConfig.Request.SerializeToString,
-            v6__1__pb2.ValidateProviderConfig.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ValidateProviderConfig',
+            tfplugin6__4__pb2.ValidateProviderConfig.Request.SerializeToString,
+            tfplugin6__4__pb2.ValidateProviderConfig.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -273,9 +315,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ValidateResourceConfig',
-            v6__1__pb2.ValidateResourceConfig.Request.SerializeToString,
-            v6__1__pb2.ValidateResourceConfig.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ValidateResourceConfig',
+            tfplugin6__4__pb2.ValidateResourceConfig.Request.SerializeToString,
+            tfplugin6__4__pb2.ValidateResourceConfig.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -290,9 +332,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ValidateDataResourceConfig',
-            v6__1__pb2.ValidateDataResourceConfig.Request.SerializeToString,
-            v6__1__pb2.ValidateDataResourceConfig.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ValidateDataResourceConfig',
+            tfplugin6__4__pb2.ValidateDataResourceConfig.Request.SerializeToString,
+            tfplugin6__4__pb2.ValidateDataResourceConfig.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -307,9 +349,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/UpgradeResourceState',
-            v6__1__pb2.UpgradeResourceState.Request.SerializeToString,
-            v6__1__pb2.UpgradeResourceState.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/UpgradeResourceState',
+            tfplugin6__4__pb2.UpgradeResourceState.Request.SerializeToString,
+            tfplugin6__4__pb2.UpgradeResourceState.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -324,9 +366,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ConfigureProvider',
-            v6__1__pb2.ConfigureProvider.Request.SerializeToString,
-            v6__1__pb2.ConfigureProvider.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ConfigureProvider',
+            tfplugin6__4__pb2.ConfigureProvider.Request.SerializeToString,
+            tfplugin6__4__pb2.ConfigureProvider.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -341,9 +383,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ReadResource',
-            v6__1__pb2.ReadResource.Request.SerializeToString,
-            v6__1__pb2.ReadResource.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ReadResource',
+            tfplugin6__4__pb2.ReadResource.Request.SerializeToString,
+            tfplugin6__4__pb2.ReadResource.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -358,9 +400,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/PlanResourceChange',
-            v6__1__pb2.PlanResourceChange.Request.SerializeToString,
-            v6__1__pb2.PlanResourceChange.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/PlanResourceChange',
+            tfplugin6__4__pb2.PlanResourceChange.Request.SerializeToString,
+            tfplugin6__4__pb2.PlanResourceChange.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -375,9 +417,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ApplyResourceChange',
-            v6__1__pb2.ApplyResourceChange.Request.SerializeToString,
-            v6__1__pb2.ApplyResourceChange.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ApplyResourceChange',
+            tfplugin6__4__pb2.ApplyResourceChange.Request.SerializeToString,
+            tfplugin6__4__pb2.ApplyResourceChange.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -392,9 +434,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ImportResourceState',
-            v6__1__pb2.ImportResourceState.Request.SerializeToString,
-            v6__1__pb2.ImportResourceState.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ImportResourceState',
+            tfplugin6__4__pb2.ImportResourceState.Request.SerializeToString,
+            tfplugin6__4__pb2.ImportResourceState.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -409,9 +451,9 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/ReadDataSource',
-            v6__1__pb2.ReadDataSource.Request.SerializeToString,
-            v6__1__pb2.ReadDataSource.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/ReadDataSource',
+            tfplugin6__4__pb2.ReadDataSource.Request.SerializeToString,
+            tfplugin6__4__pb2.ReadDataSource.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -426,8 +468,8 @@ class Provider(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/v6.Provider/StopProvider',
-            v6__1__pb2.StopProvider.Request.SerializeToString,
-            v6__1__pb2.StopProvider.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/tfplugin6.Provider/StopProvider',
+            tfplugin6__4__pb2.StopProvider.Request.SerializeToString,
+            tfplugin6__4__pb2.StopProvider.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
